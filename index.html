@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML,CSS & HTML</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background: white;
+        min-height: 100vh;
+      }
+      .navbar {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(51, 51, 51, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 50px;
+        padding: 10px;
+        z-index: 1000;
+        border: 1px solid rgba(51, 51, 51, 0.3);
+      }
+      .nav-list {
+        display: flex;
+        list-style: none;
+        position: relative;
+      }
+      .nav-item {
+        position: relative;
+      }
+      .nav-link {
+        display: block;
+        padding: 12px 20px;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: color 0.3s ease;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .nav-link:hover {
+        color: #f0f0f0;
+      }
+      .nav-indicator {
+        position: absolute;
+        top: 0;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 25px;
+        height: 100%;
+        transition: all 0.3s ease;
+        z-index: -1;
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+      }
+      .content {
+        padding-top: 100px;
+      }
+      .section {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #333;
+        text-align: center;
+      }
+      .section h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      .section p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        line-height: 1.6;
+      }
+      .section-content {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 60px;
+        max-width: 1000px;
+        width: 100%;
+        margin-top: 2rem;
+      }
+
+      .image-container {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .section img {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+      }
+
+      .topics-container {
+        flex: 1;
+        text-align: left;
+      }
+
+      .topics-container h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+        text-align: center;
+      }
+
+      .topics-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 12px;
+        max-width: 600px;
+      }
+      .topics-list li {
+        background: rgba(51, 51, 51, 0.05);
+        border-radius: 8px;
+        padding: 8px 0;
+        text-align: center;
+        transition: background 0.3s ease;
+      }
+      .topics-list li:hover {
+        background: rgba(51, 51, 51, 0.1);
+      }
+      .topics-list a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: block;
+        padding: 8px 16px;
+        border-radius: 6px;
+      }
+      .topics-list a:hover {
+        color: red;
+        transform: scale(1.2);
+        font-weight: 600;
+      }
+      .resources {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    flex-wrap: wrap; 
+  }
+
+  .resources-left p {
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .resources-left a {
+    color:  grey;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: 0.3s;
+  }
+
+  .resources-left a:hover {
+    border-bottom: 1px solid #000;
+  }
+
+  .resources-right img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    transition: transform 0.3s;
+  }
+
+  .resources-right img:hover {
+    transform: scale(1.05);
+  }
+      @media (max-width: 768px) {
+        .navbar {
+          left: 20px;
+          right: 20px;
+          transform: none;
+          border-radius: 20px;
+        }
+        .nav-list {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .nav-link {
+          padding: 10px 15px;
+          font-size: 13px;
+        }
+        .section h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <div class="nav-indicator"></div>
+        <li class="nav-item">
+          <a href="#home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#HTML" class="nav-link">HTML</a>
+        </li>
+        <li class="nav-item">
+          <a href="#CSS" class="nav-link">CSS</a>
+        </li>
+        <li class="nav-item">
+          <a href="#JS" class="nav-link">JS</a>
+        </li>
+        <li class="nav-item">
+          <a href="#source" class="nav-link">Source-Code</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="content">
+      <section id="home" class="section">
+        <header>
+          <h1>HTML, CSS AND JAVASCRIPT</h1>
+        </header>
+        <p>
+          This cheatsheat for html,css and javascript will provide you to
+          sources for every topics in these languages
+        </p>
+      </section>
+
+      <section id="HTML" class="section">
+        <h1>HTML</h1>
+        <div class="section-container">
+          <div class="image-container">
+            <img src="/assets/html.svg" alt="HTML logo" />
+          </div>
+          <div class="topics-container">
+            <h3>Topics:</h3>
+            <ul class="topics-list">
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div"
+                  target="_blank"
+                  >&lt;div&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p"
+                  target="_blank"
+                  >&lt;p&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a"
+                  target="_blank"
+                  >&lt;a&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/h1"
+                  target="_blank"
+                  >&lt;h1&gt;-&lt;h6&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul"
+                  target="_blank"
+                  >&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"
+                  target="_blank"
+                  >&lt;img&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span"
+                  target="_blank"
+                  >&lt;span&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/b"
+                  target="_blank"
+                  >&lt;b&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i"
+                  target="_blank"
+                  >&lt;i&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form"
+                  target="_blank"
+                  >&lt;form&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input"
+                  target="_blank"
+                  >&lt;input&gt;</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button"
+                  target="_blank"
+                  >&lt;button&gt;</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="CSS" class="section">
+        <h1>CSS</h1>
+        <div class="section-container">
+          <div class="image-container">
+            <img src="/assets/css.svg" alt="HTML logo" />
+          </div>
+          <div class="topics-container">
+            <h3>Topics:</h3>
+            <ul class="topics-list">
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/Selector"
+                  target="_blank"
+                  >Selector</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#properties"
+                  target="_blank"
+                  >Properties</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/Value"
+                  target="_blank"
+                  >Values</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements"
+                  target="_blank"
+                  >Pseudo-elements</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes"
+                  target="_blank"
+                  >Pseudo-classes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex"
+                  target="_blank"
+                  >Flex</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid"
+                  target="_blank"
+                  >Grid</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation"
+                  target="_blank"
+                  >Animations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes"
+                  target="_blank"
+                  >Keyframes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://tailwindcss.com/docs/utility-first"
+                  target="_blank"
+                  >Tailwind CSS</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="JS" class="section">
+        <h1>JAVASCRIPT</h1>
+        <div class="section-container">
+          <div class="image-container">
+            <img src="/assets/js.svg" alt="HTML logo" />
+          </div>
+          <div class="topics-container">
+            <h3>Topics:</h3>
+            <ul class="topics-list">
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#declarations"
+                  target="_blank"
+                  >Variables</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures"
+                  target="_blank"
+                  >Datatypes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions"
+                  target="_blank"
+                  >Functions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators"
+                  target="_blank"
+                  >Operators</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array"
+                  target="_blank"
+                  >Arrays</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="content">
+      <section id="source" class="section">
+        <h1>RESOURCES</h1>
+        <div class="resources-left">
+    <p>Source code for this site: <a href="https://github.com/YourUsername" target="_blank">GitHub Repo</a></p>
+    <p>Figma: <a href="https://www.figma.com/file/YourFigmaID" target="_blank">View Design</a></p>
+    <p>Inspired by: <a href="https://interactivenavigation.framer.website/#home" target="_blank">Inspiration Site</a></p>
+  </div>
+
+  <div class="resources-right">
+    <a href="https://github.com/haru-kunyo" target="_blank">
+      <img src="https://github.com/haru-kunyo.png" alt="GitHub Profile" />
+    </a>
+  </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      const navLinks = document.querySelectorAll(".nav-link");
+      const indicator = document.querySelector(".nav-indicator");
+      const sections = document.querySelectorAll(".section");
+
+      function setIndicatorPosition(link) {
+        const linkRect = link.getBoundingClientRect();
+        const navRect = link.closest(".nav-list").getBoundingClientRect();
+
+        indicator.style.left = linkRect.left - navRect.left + "px";
+        indicator.style.width = linkRect.width + "px";
+      }
+
+      if (navLinks.length > 0) {
+        setIndicatorPosition(navLinks[0]);
+      }
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          setIndicatorPosition(this);
+
+          const targetId = this.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          if (targetSection) {
+            targetSection.scrollIntoView({
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      function updateIndicatorOnScroll() {
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+
+          if (window.scrollY >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        if (current) {
+          const activeLink = document.querySelector(`a[href="#${current}"]`);
+          if (activeLink) {
+            setIndicatorPosition(activeLink);
+          }
+        }
+      }
+
+      window.addEventListener("scroll", updateIndicatorOnScroll);
+
+      window.addEventListener("resize", () => {
+        const activeLink = document.querySelector(".nav-link");
+        if (activeLink) {
+          setIndicatorPosition(activeLink);
+        }
+      });
+    </script>
+  </body>
+</html>
