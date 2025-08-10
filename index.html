@@ -10,7 +10,6 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         font-family: "Arial", sans-serif;
         background: white;
@@ -89,20 +88,17 @@
         width: 100%;
         margin-top: 2rem;
       }
-
       .image-container {
         flex: 0 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
       }
-
       .section img {
         width: 200px;
         height: 200px;
         object-fit: contain;
       }
-
       .topics-container {
         flex: 1;
         text-align: left;
@@ -114,7 +110,6 @@
         color: #333;
         text-align: center;
       }
-
       .topics-list {
         list-style: none;
         display: grid;
@@ -180,24 +175,50 @@
     transform: scale(1.05);
   }
       @media (max-width: 768px) {
-        .navbar {
-          left: 20px;
-          right: 20px;
-          transform: none;
-          border-radius: 20px;
-        }
-        .nav-list {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-        .nav-link {
-          padding: 10px 15px;
-          font-size: 13px;
-        }
-        .section h1 {
-          font-size: 2rem;
-        }
-      }
+  .navbar {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 15px;
+    padding: 8px 10px;
+    width: auto;
+    max-width: calc(100% - 20px);
+  }
+  .nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .section-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .image-container img {
+    width: 150px;
+    height: auto; 
+  }
+  .topics-container {
+    text-align: center;
+  }
+  .topics-list {
+    grid-template-columns: 1fr; 
+  }
+  .resources {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+  }
+  .resources-right img {
+    width: 60px;
+    height: 60px;
+  }
+}
     </style>
   </head>
   <body>
@@ -485,66 +506,72 @@
     </div>
     <script>
       const navLinks = document.querySelectorAll(".nav-link");
-      const indicator = document.querySelector(".nav-indicator");
-      const sections = document.querySelectorAll(".section");
+const indicator = document.querySelector(".nav-indicator");
+const sections = document.querySelectorAll(".section");
 
-      function setIndicatorPosition(link) {
-        const linkRect = link.getBoundingClientRect();
-        const navRect = link.closest(".nav-list").getBoundingClientRect();
+function setIndicatorPosition(link) {
+  const linkRect = link.getBoundingClientRect();
+  const navRect = link.closest(".nav-list").getBoundingClientRect();
 
-        indicator.style.left = linkRect.left - navRect.left + "px";
-        indicator.style.width = linkRect.width + "px";
-      }
+  indicator.style.left = linkRect.left - navRect.left + "px";
+  indicator.style.top = linkRect.top - navRect.top + "px"; // NEW: supports wrapped rows
+  indicator.style.width = linkRect.width + "px";
+  indicator.style.height = linkRect.height + "px"; // NEW: match nav link height
+}
 
-      if (navLinks.length > 0) {
-        setIndicatorPosition(navLinks[0]);
-      }
+if (navLinks.length > 0) {
+  setIndicatorPosition(navLinks[0]);
+}
 
-      navLinks.forEach((link) => {
-        link.addEventListener("click", function (e) {
-          e.preventDefault();
+navLinks.forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
 
-          setIndicatorPosition(this);
+    // Remove old active state
+    navLinks.forEach(l => l.classList.remove("active"));
+    this.classList.add("active");
 
-          const targetId = this.getAttribute("href").substring(1);
-          const targetSection = document.getElementById(targetId);
+    setIndicatorPosition(this);
 
-          if (targetSection) {
-            targetSection.scrollIntoView({
-              behavior: "smooth",
-            });
-          }
-        });
-      });
+    const targetId = this.getAttribute("href").substring(1);
+    const targetSection = document.getElementById(targetId);
 
-      function updateIndicatorOnScroll() {
-        let current = "";
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
 
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
+function updateIndicatorOnScroll() {
+  let current = "";
 
-          if (window.scrollY >= sectionTop - 200) {
-            current = section.getAttribute("id");
-          }
-        });
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
 
-        if (current) {
-          const activeLink = document.querySelector(`a[href="#${current}"]`);
-          if (activeLink) {
-            setIndicatorPosition(activeLink);
-          }
-        }
-      }
+    if (window.scrollY >= sectionTop - 200) {
+      current = section.getAttribute("id");
+    }
+  });
 
-      window.addEventListener("scroll", updateIndicatorOnScroll);
+  if (current) {
+    const activeLink = document.querySelector(`a[href="#${current}"]`);
+    if (activeLink) {
+      navLinks.forEach(l => l.classList.remove("active"));
+      activeLink.classList.add("active");
+      setIndicatorPosition(activeLink);
+    }
+  }
+}
 
-      window.addEventListener("resize", () => {
-        const activeLink = document.querySelector(".nav-link");
-        if (activeLink) {
-          setIndicatorPosition(activeLink);
-        }
-      });
+window.addEventListener("scroll", updateIndicatorOnScroll);
+
+window.addEventListener("resize", () => {
+  const activeLink = document.querySelector(".nav-link.active") || navLinks[0];
+  if (activeLink) {
+    setIndicatorPosition(activeLink);
+  }
+});
     </script>
   </body>
 </html>
