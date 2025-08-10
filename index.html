@@ -80,7 +80,7 @@
         max-width: 600px;
         line-height: 1.6;
       }
-      .section-content {
+      .section-container {
         display: flex;
         align-items: flex-start;
         justify-content: center;
@@ -156,23 +156,19 @@
     font-family: Arial, sans-serif;
     flex-wrap: wrap; 
   }
-
   .resources-left p {
     margin: 8px 0;
     font-size: 14px;
   }
-
   .resources-left a {
     color:  grey;
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: 0.3s;
   }
-
   .resources-left a:hover {
     border-bottom: 1px solid #000;
   }
-
   .resources-right img {
     width: 80px;
     height: 80px;
@@ -180,7 +176,6 @@
     border: 2px solid #000;
     transition: transform 0.3s;
   }
-
   .resources-right img:hover {
     transform: scale(1.05);
   }
@@ -424,7 +419,7 @@
         <h1>JAVASCRIPT</h1>
         <div class="section-container">
           <div class="image-container">
-            <img src="assets/js.svg" alt="HTML logo" />
+            <img src="assets/js.svg" alt="JS logo" />
           </div>
           <div class="topics-container">
             <h3>Topics:</h3>
@@ -472,9 +467,10 @@
     <div class="content">
       <section id="source" class="section">
         <h1>RESOURCES</h1>
-        <div class="resources-left">
-    <p>Source code for this site: <a href="https://github.com/YourUsername" target="_blank">GitHub Repo</a></p>
-    <p>Figma: <a href="https://www.figma.com/file/YourFigmaID" target="_blank">View Design</a></p>
+        <div class="resources">
+          <div class="resources-left">
+    <p>Source code for this site: <a href="https://github.com/haru-kunyo/HTML-CSS-JS-cheatsheet/blob/main/index.html" target="_blank">GitHub Repo</a></p>
+    <p>Figma for logos: <a href="https://www.figma.com/design/dFElQBcVePipp8RbajDgXo/New-Web-Logos--Community-?node-id=7-6&t=RFaazHgivoqbgjZb-0" target="_blank">View Design</a></p>
     <p>Inspired by: <a href="https://interactivenavigation.framer.website/#home" target="_blank">Inspiration Site</a></p>
   </div>
 
@@ -483,6 +479,7 @@
       <img src="https://github.com/haru-kunyo.png" alt="GitHub Profile" />
     </a>
   </div>
+        </div>
         </div>
       </section>
     </div>
